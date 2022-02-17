@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.8.2/angular.min.js"></script>
+    <script src="front.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.metroui.org.ua/v4/css/metro-all.min.css">
+  </head>
+<style>
+.labels{
+  color: black;
+}
+
+#save{
+  position: relative;
+  float: right;
+  margin-top: 5px;
+}
+
+#trash{
+  width:30px;
+  color:white;
+  background-color:#c50000;
+  border-style: solid;
+  border-color: #c50000;
+  cursor: pointer;
+}
+
+#titulo{
+  text-align: center;
+  width: 100%;
+  font-size: 300%;
+  margin-bottom: 50px;
+  background-color: #008f8c;
+  color: white;
+}
+
+.table{
+  margin-top: 5%;
+}
+
+#spinner{
+  position: relative;
+  float:right;
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
+.container{
+  max-width: 800px;
+}
+
+#table{
+  max-width: 1000px;
+}
+#tabfoot{
+  border-bottom: #008f8c;
+  height: 5px;
+  background-color: #5fafae;
+}
+</style>
+<body ng-app="aplicacao" ng-controller="Rest">
+<label id="titulo">Cadastro de Pessoas</label>
+<form >
+    <div class="container">
+      <div class="form-floating mb-3">
+        <input type="text" class="form-control" id="nome" name="nome">
+        <label for="floatingInput">Nome</label>
+      </div>
+
+      <div class="form-floating mb-3">
+        <input type="text" id="cpfcnpj" name="cpfcnpj" class="form-control">
+        <label for="floatingInput">CPF ou CNPJ</label>
+      </div>
+
+      <div class="form-floating mb-3" id="tele">
+        <input type="text" id="telefones" name="telefone" data-role="taginput" data-tag-trigger="Enter" data-tag-separator="_" class="form-control">
+        <label for="floatingInput" >Telefone</label>
+      </div>
+
+      <div class="form-floating mb-3" id="ende">
+        <input type="text" id="enderecos" name="endereco" data-role="taginput" data-tag-trigger="Enter" data-tag-separator="_" class="form-control">
+        <label for="floatingInput" >Endereço</label>
+      </div>
+    <div id="diva">
+      <button ng-click="salvar()" class="btn btn-success" id="save">{{btninfo}}</button>
+    </div>
+  </div>
+</form>
+<div ng-init="busca()" class="container" id="table">
+    <table class="table">
+        <thead>
+        <tr><th scope="col">Ordem</th>
+            <th scope="col">Nome</th>
+            <th scope="col">CPF/CNPJ</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Telefone</th></tr>
+        </thead>
+        <tr ng-repeat="usuario in usuarios">
+            <td scope="col">{{$index+1}}</td>
+            <td scope="col">{{usuario.nome}}</td>
+            <td scope="col">{{usuario.cpfcnpj}}</td>
+            <td scope="col">{{usuario.enderecos}}</td>
+            <td scope="col">{{usuario.telefones}}</td>
+            <td><button id="trash" ng-click="deleta(usuario.idpessoa)"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+            </svg></button></td>
+        </tr>
+    </table>
+</body>
+<script src="https://cdn.metroui.org.ua/v4/js/metro.min.js"></script>
+</html>
