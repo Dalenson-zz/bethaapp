@@ -27,7 +27,7 @@ public class controle {
 
     @CrossOrigin
     @PostMapping(path = "/cadastro")
-    public ResponseEntity salvar(@RequestBody Pessoas pessoas) {
+    public ResponseEntity cadastro(@RequestBody Pessoas pessoas) {
         List<Pessoas> p = (List<Pessoas>) pessoasRepository.findAll();
         for (Pessoas pessoa : p) {
             if (pessoa.cpfcnpj.equals(pessoas.cpfcnpj)) {
@@ -38,7 +38,7 @@ public class controle {
     }
     @CrossOrigin
     @RequestMapping(method = RequestMethod.GET, path = "/buscatodos")
-    public ResponseEntity busca(){
+    public ResponseEntity buscatodos(){
         List<Pessoas> lista = new ArrayList<Pessoas>();
         for (Pessoas pessoas :pessoasRepository.findAll()){
             lista.add(pessoas);
@@ -61,17 +61,14 @@ public class controle {
     }
 
     @CrossOrigin
-    @ResponseBody
-    @GetMapping("/")
-    public String index(){
-        System.out.println("asd");
-        return "index";
+    @PostMapping(path = "/useradd")
+    public ResponseEntity useradd(@RequestBody Usuarios user){
+        return ResponseEntity.ok().body(usuariosRepository.save(user));
     }
 
-
     @CrossOrigin
-    @PostMapping(path = "/useradd")
-    public ResponseEntity salvarusuario(@RequestBody Usuarios user){
-        return ResponseEntity.ok().body(usuariosRepository.save(user));
+    @RequestMapping(method = RequestMethod.GET, path = "/getlogin")
+    public ResponseEntity getlogin(){
+        return ResponseEntity.ok().body(usuariosRepository.findAll());
     }
 }

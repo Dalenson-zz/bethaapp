@@ -11,7 +11,7 @@ public class Usuarios {
     @Column(nullable = false, length = 100)
     public String usuario;
 
-    @Column(nullable = false, length = 100)
+    @Column(length = 100)
     public String senha;
 
     public Integer getIdusuario() {

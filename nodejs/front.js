@@ -67,6 +67,14 @@ app.controller("Rest", function ($scope, $http) {
   };
 
   $scope.salvaruser = function () {
+    var notify = Metro.notify;
+        notify.setup({
+            width: 300,
+            duration: 1000,
+            animation: 'easeOutBounce'
+        });
+        notify.create("Gravando Usuário...");
+        notify.reset();
     if(usuario.value == '' || senha.value == ''){
       var notify = Metro.notify;
         notify.create("Usuário ou senha não preenchidos", "Alerta !", {
@@ -96,6 +104,16 @@ app.controller("Rest", function ($scope, $http) {
       });
   }
   };
+  $scope.getlogin = function () {
+    $http.get("http://localhost:8080/pessoas/getlogin").then(function (data) {
+      for(i=0; i<data.data.length; i++){
+        if(data.data[i].usuario == document.getElementById('user').value && data.data[i].senha == document.getElementById('senhauser').value){
+          window.location.href = "http://localhost:8082/cadastro"
+        }
+      }
+    })
+  };
+
 });
 
 function spinnerSalvar() {
