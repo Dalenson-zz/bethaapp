@@ -16,13 +16,13 @@ import java.util.List;
 
 @Controller
 @RequestMapping("/pessoas")
-public class controle {
+public class Controle {
 
     @Autowired
     final private PessoasRepository pessoasRepository;
     final private UsuariosRepository usuariosRepository;
 
-    public controle(PessoasRepository pessoasRepository, UsuariosRepository usuariosRepository) {
+    public Controle(PessoasRepository pessoasRepository, UsuariosRepository usuariosRepository) {
         this.pessoasRepository = pessoasRepository;
         this.usuariosRepository = usuariosRepository;
     }
@@ -30,8 +30,8 @@ public class controle {
     @CrossOrigin
     @PostMapping(path = "/cadastro")
     public ResponseEntity cadastro(@RequestBody Pessoas pessoas) {
-        List<Pessoas> p = (List<Pessoas>) pessoasRepository.findAll();
-        for (Pessoas pessoa : p) {
+        List<Pessoas> lista = (List<Pessoas>) pessoasRepository.findAll();
+        for (Pessoas pessoa : lista) {
             if (pessoa.cpfcnpj.equals(pessoas.cpfcnpj)) {
                 return ResponseEntity.status(HttpStatus.FORBIDDEN).body("CPF/CNPJ Igual!");
             }

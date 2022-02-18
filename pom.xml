@@ -76,7 +76,7 @@
 					<appendAssemblyId>false</appendAssemblyId>
 					<archive>
 						<manifest>
-							<mainClass>com.example.demo.DemoApplication</mainClass>
+							<mainClass>com.example.demo.Main</mainClass>
 						</manifest>
 					</archive>
 					<descriptorRefs>
