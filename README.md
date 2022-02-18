@@ -1,13 +1,20 @@
-# bethaapp
+# Bethaapp
 > Tecnologias utilizadas
+
+### Importante
+> Java version "17.0.2" 2022-01-18 LTS
+> 
+> Java(TM) SE Runtime Environment (build 17.0.2+8-LTS-86)
+> 
+> Java HotSpot(TM) 64-Bit Server VM (build 17.0.2+8-LTS-86, mixed mode, sharing)
 
 * Angular JS
 * Spring Boot
 * Banco de Dados Mysql ou Postgres
 
-> Regras dos cadastro de clientes
+> Regras do cadastro de clientes
 * Não pode haver CPF ou CNPJ duplicado
-* Deverá ser possivel registrar quantos endereços forem necessários tendo que definir apenas 1 como principal
+* Deverá ser possivel registrar quantos endereços forem necessários, tendo que definir apenas um como principal
 * Deve permitir registrar quantos telefones forem necessários
 
 # Preparando projeto para utilização
