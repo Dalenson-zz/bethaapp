@@ -10,7 +10,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import com.example.demo.respository.PessoasRepository;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+
 
 @Controller
 @RequestMapping("/pessoas")
