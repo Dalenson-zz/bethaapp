@@ -109,9 +109,20 @@ app.controller("Rest", function ($scope, $http) {
       for(i=0; i<data.data.length; i++){
         if(data.data[i].usuario == document.getElementById('user').value && data.data[i].senha == document.getElementById('senhauser').value){
           window.location.href = "http://localhost:8082/cadastro"
+        }else{
+          var notify = Metro.notify;
+          notify.setup({
+            width: 300,
+            duration: 1000,
+            animation: 'easeOutBounce'
+        });
+          notify.create("Usuário ou senha incorreta!");
+          notify.reset();
         }
       }
-    })
+    }, function errorCallback(response){
+      Metro.notify.create("Não foi possivel acessar o banco e validar usuário!", "", {});
+    });
   };
 
 });
