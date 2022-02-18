@@ -12,6 +12,8 @@
 * Spring Boot
 * Banco de Dados Mysql ou Postgres
 
+> Não foi utilizado o OAuth 2.0. Foi criado apenas uma tela de login que verifica no banco se já existe usuário e senha cadastrados e redireciona para uma outra pagina.
+
 > Regras do cadastro de clientes
 * Não pode haver CPF ou CNPJ duplicado
 * Deverá ser possivel registrar quantos endereços forem necessários, tendo que definir apenas um como principal
