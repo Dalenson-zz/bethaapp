@@ -12,6 +12,8 @@
 * Spring Boot
 * Banco de Dados Mysql ou Postgres
 
+> Foi utilizado para o banco de dados a hospedagem no site https://dashboard.heroku.com
+
 > Não foi utilizado o OAuth 2.0. Foi criado apenas uma tela de login que verifica no banco se já existe usuário e senha cadastrados e redireciona para uma outra pagina.
 
 > Regras do cadastro de clientes
@@ -51,3 +53,40 @@ Ao realizar o cadastro de pesssoas é possivel adicionar quantos telefones forem
 
 ![Alt Text](https://user-images.githubusercontent.com/22826432/154593452-7e37e1e1-5a9c-481c-981b-428cb4ae8c38.png)
 
+
+
+
+# Criação das tabelas do banco de dados
+
+```
+CREATE TABLE pessoas (
+  	idpessoa int(11) auto_increment NOT NULL,
+	nome varchar(100) NOT NULL,
+	cpfcnpj varchar(14) NOT NULL,
+	PRIMARY KEY (idpessoa)
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+
+CREATE TABLE pessoas_enderecos  (
+    id int(11) auto_increment NOT NULL,
+	endereco varchar(100) NOT NULL,
+	principal varchar(100) NOT NULL,
+	idpessoa int(11) not null,
+	PRIMARY KEY (id),
+	CONSTRAINT idpessoa FOREIGN KEY (idpessoa) REFERENCES pessoas (idpessoa) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+
+CREATE TABLE pessoas_telefones  (
+    id int(11) auto_increment NOT NULL,
+	telefone varchar(100) NOT NULL,
+	idp int(11) not null,
+	PRIMARY KEY (id),
+	CONSTRAINT idp FOREIGN KEY (idp) REFERENCES pessoas (idpessoa) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8
+
+CREATE TABLE usuarios (
+    idusuario int(11) auto_increment NOT NULL,
+	usuario varchar(100) NOT NULL,
+	senha varchar(100) NOT NULL,
+	PRIMARY KEY (idusuario)
+) ENGINE=InnoDB AUTO_INCREMENT=104 DEFAULT CHARSET=utf8
+```
